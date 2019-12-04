@@ -3,7 +3,7 @@
     if ($argv[1])
     {
         $ret = explode(" ", $argv[1]);
-        $ret = array_filter($ret);
+        $ret = array_filter($ret, 'strlen');
         $len = count($ret);
         $i = 1;
         foreach ($ret as $value)
@@ -13,6 +13,6 @@
                 echo " ";
             $i++;
         }
+        echo "\n";
     }
-    echo "\n";
 ?>
