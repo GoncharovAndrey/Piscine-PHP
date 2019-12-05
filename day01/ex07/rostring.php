@@ -14,7 +14,7 @@
         foreach ($ret as $value)
         {
             echo $value;
-            if (i < count($ret))
+            if ($i < count($ret))
                 echo " ";
             $i++;
         }
