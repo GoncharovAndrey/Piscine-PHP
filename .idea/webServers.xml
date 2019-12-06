@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="393cf402-856b-45ef-9c8e-5c4683a970f5" name="piscine" url="http://localhostpiscine">
+        <fileTransfer port="0" mountedRoot="$PROJECT_DIR$/../../piscine_web_server" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
