@@ -4,7 +4,6 @@
         $account = unserialize(file_get_contents('../private/passwd'));
         if ($account)
         {
-            $err = 1;
             foreach ($account as $i => $num)
             {
                 if ($num['login'] === $_POST['login'] && $num['passwd'] === hash('whirlpool', $_POST['oldpw']))
@@ -13,14 +12,10 @@
                     $account[$i]['passwd'] =  hash('whirlpool', $_POST['newpw']);
                     file_put_contents('../private/passwd', serialize($account));
                     echo "OK\n";
+                    return;
                 }
             }
-            if ($err)
-                echo "ERROR\n";
         }
-        else
-            echo "ERROR\n";
     }
-    else
-        echo "ERROR\n";
+    echo "ERROR\n";
 ?>
