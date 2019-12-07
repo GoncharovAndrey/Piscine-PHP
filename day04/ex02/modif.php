@@ -1,26 +1,26 @@
 <?php
-if ($_POST['login'] && $_POST['oldpw'] && $_POST['newpw'] && $_POST['submit'] && $_POST['submit'] === "OK")
-{
-    $account = unserialize(file_get_contents('../private/passwd'));
-    if ($account)
+    if ($_POST['login'] && $_POST['oldpw'] && $_POST['newpw'] && $_POST['submit'] && $_POST['submit'] === "OK")
     {
-        $err = 1;
-        foreach ($account as $i => $num)
+        $account = unserialize(file_get_contents('../private/passwd'));
+        if ($account)
         {
-            if ($num['login'] === $_POST['login'] && $num['passwd'] === hash('whirlpool', $_POST['oldpw']))
+            $err = 1;
+            foreach ($account as $i => $num)
             {
-                $err = 0;
-                $account[$i]['passwd'] =  hash('whirlpool', $_POST['newpw']);
-                file_put_contents('../private/passwd', serialize($account));
-                echo "OK\n";
+                if ($num['login'] === $_POST['login'] && $num['passwd'] === hash('whirlpool', $_POST['oldpw']))
+                {
+                    $err = 0;
+                    $account[$i]['passwd'] =  hash('whirlpool', $_POST['newpw']);
+                    file_put_contents('../private/passwd', serialize($account));
+                    echo "OK\n";
+                }
             }
+            if ($err)
+                echo "ERROR\n";
         }
-        if ($err)
+        else
             echo "ERROR\n";
     }
     else
         echo "ERROR\n";
-}
-else
-    echo "ERROR\n";
 ?>
